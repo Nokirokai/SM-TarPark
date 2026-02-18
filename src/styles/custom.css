@@ -1,0 +1,205 @@
+/* Modern Professional UI Custom Styles */
+
+@layer utilities {
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  [data-theme="dark"] .glass,
+  body.dark .glass {
+    background: rgba(30, 41, 59, 0.7);
+  }
+
+  [data-theme="night"] .glass,
+  body.night .glass {
+    background: rgba(10, 10, 30, 0.6);
+  }
+
+  /* Glow effects */
+  .glow-sm {
+    box-shadow: 0 0 20px var(--primary);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 30px var(--primary);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 40px var(--primary);
+  }
+
+  /* Grid background */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(30, 64, 175, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 64, 175, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  [data-theme="dark"] .grid-bg,
+  body.dark .grid-bg {
+    background-image: 
+      linear-gradient(rgba(96, 165, 250, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(96, 165, 250, 0.1) 1px, transparent 1px);
+  }
+
+  [data-theme="night"] .grid-bg,
+  body.night .grid-bg {
+    background-image: 
+      linear-gradient(rgba(34, 211, 238, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 211, 238, 0.15) 1px, transparent 1px);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--secondary);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+
+  /* Animated gradient border */
+  .gradient-border {
+    position: relative;
+    border-radius: var(--radius);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: var(--radius);
+    padding: 2px;
+    background: linear-gradient(45deg, var(--primary), var(--accent), var(--primary));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
+
+  /* Shimmer effect */
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    animation: shimmer 2s infinite;
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Pulse glow */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px var(--primary);
+    }
+    50% {
+      box-shadow: 0 0 30px var(--primary);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Theme-safe text colors - Use these instead of hardcoded colors */
+  .text-theme-primary {
+    color: var(--primary);
+  }
+
+  .text-theme-secondary {
+    color: var(--secondary-foreground);
+  }
+
+  .text-theme-accent {
+    color: var(--accent);
+  }
+
+  .text-theme-muted {
+    color: var(--muted-foreground);
+  }
+
+  .text-theme-foreground {
+    color: var(--foreground);
+  }
+
+  /* Background helpers */
+  .bg-theme-card {
+    background-color: var(--card);
+  }
+
+  .bg-theme-secondary {
+    background-color: var(--secondary);
+  }
+
+  .bg-theme-muted {
+    background-color: var(--muted);
+  }
+
+  /* Border helpers */
+  .border-theme {
+    border-color: var(--border);
+  }
+}
